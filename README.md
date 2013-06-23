@@ -27,7 +27,6 @@ public MyClass {
         try {
             pd.addFile(filename);
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             System.err.println("Can't add file: " + filename);
         }
 
@@ -35,7 +34,6 @@ public MyClass {
         try {
             send(pd);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             System.err.println("Can't send data to ABRT: " + e.getMessage());
         }
     }
