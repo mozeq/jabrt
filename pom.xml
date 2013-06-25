@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.redhat.abrt</groupId>
-  <artifactId>abrt-java</artifactId>
+  <artifactId>jabrt</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>abrt-java</name>
+  <name>jabrt</name>
   <url>http://maven.apache.org</url>
 
   <properties>
