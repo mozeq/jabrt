@@ -50,7 +50,6 @@ public class ProblemDataItemFile implements ProblemDataItem {
         return fileData.toString();
     }
 
-	@Override
 	public String getString() {
 		if (fileContents == null)
 			fileContents = readFileToString(reader);
@@ -58,7 +57,6 @@ public class ProblemDataItemFile implements ProblemDataItem {
 		return fileContents;
 	}
 
-	@Override
 	public String getString(boolean populate) {
 		if (populate == true)
 			return getString();

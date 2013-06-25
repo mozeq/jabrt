@@ -7,12 +7,10 @@ public class ProblemDataItemString implements ProblemDataItem {
 		this.value = value;
 	}
 
-	@Override
 	public String getString() {
 		return value;
 	}
 
-	@Override
 	public String getString(boolean populate) {
 		return getString();
 	}
