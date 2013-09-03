@@ -41,7 +41,6 @@ public class ProblemDataAbrt implements ProblemData {
 	public Set<java.util.Map.Entry<String, String>> entrySet() {
 		Map<String, String> retval = new HashMap<String, String>();
 		for (Entry<String, ProblemDataItem> item: problemData.entrySet()) {
-			System.out.println("processing: " + item.getKey());
 			retval.put(item.getKey(), item.getValue().getString());
 		}
 

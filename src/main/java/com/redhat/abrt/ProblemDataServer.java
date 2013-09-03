@@ -31,10 +31,8 @@ public class ProblemDataServer {
 		} catch (Exception e) {
 			System.out.println("Can't open socket: " + e.getMessage());
 		}
-		System.out.println("Opening socket");
 		try {
 			channel = UnixSocketChannel.open(address);
-			System.out.println("Socket connected");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,11 +40,6 @@ public class ProblemDataServer {
 
 		/* unbuffered writer */
 		writer = new OutputStreamWriter(Channels.newOutputStream(channel));
-
-
-		if (channel != null) {
-			System.out.println("connected to " + channel.getRemoteSocketAddress());
-		}
 	}
 
 	private void disconnect() {
@@ -70,8 +63,6 @@ public class ProblemDataServer {
 		connect();
 		writer.write("PUT / HTTP/1.1\r\n\r\n");
 		for (Entry<String, String> item: problemData.entrySet()) {
-			System.out.println("Sending: " + item.getKey() + "|" + item.getValue());
-
 			String key = null;
 
 			/* use just the last part of the path as key */
@@ -86,7 +77,6 @@ public class ProblemDataServer {
 		CharBuffer ret = CharBuffer.allocate(1024);
 		reader.read(ret);
 		ret.flip();
-		System.out.println("Server responded: '" + ret.toString().trim() + "'");
 		disconnect();
 	}
 
