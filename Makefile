@@ -5,6 +5,9 @@ RPM_DIRS = --define "_sourcedir `pwd`" \
 		   --define "_srcrpmdir `pwd`"
 
 NAME="jabrt"
+VERSION="1.0"
+COMMIT=$(shell git rev-parse HEAD)
+SHORTCOMMIT=$(shell git rev-parse HEAD | cut -c -7)
 
 default:
 	mvn compile
@@ -28,11 +31,12 @@ clean:
 	mvn clean
 	
 	
-targetdir="jabrt-1.0"
+targetdir = "$(NAME)-$(VERSION)-$(COMMIT)"
 archive:
-	test -d "$(targedir)" || mkdir -p "$(targetdir)"
-	cp -r src/ "$(targetdir)"
-	cp README.md "$(targetdir)"
-	cp pom.xml "$(targetdir)"
-	cp jabrt.spec "$(targetdir)"
-	tar zcf jabrt-1.0.tar.gz "$(targetdir)"/*
+	test -d $(targetdir) || mkdir -p $(targetdir)
+	cp -r src/ $(targetdir)
+	cp README.md $(targetdir)
+	cp pom.xml $(targetdir)
+	cp jabrt.spec $(targetdir)
+	tar zcf jabrt-1.0-$(SHORTCOMMIT).tar.gz $(targetdir)/*
+	rm -rf $(targetdir)
