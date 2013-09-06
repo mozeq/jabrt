@@ -1,4 +1,4 @@
-%global commit a481187e3459989c977389b08076b64aca8cf809
+%global commit 53b117bf105123e8d2b878e385fca31eb796f27e
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           jabrt
@@ -8,7 +8,8 @@ Summary:        ABRT Java bindings
 
 License:        Applications/System
 URL:            https://github.com/mozeq/%{name}
-Source0:        https://github.com/mozeq/%{name}/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
+#Source0:        https://github.com/mozeq/%{name}/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
+Source0:	%{name}-%{version}-%{shortcommit}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  maven-local
@@ -23,7 +24,7 @@ Summary: API documentation for %{name}
 This package contains %{summary}.
 
 %prep
-%setup -q -n %{name}-%{commit}
+%setup -q -n %{name}-%{version}-%{commit}
 
 %build
 %mvn_build
@@ -39,5 +40,5 @@ This package contains %{summary}.
 %doc
 
 %changelog
-* Fri Sep  6 Jiri Moskovcak <jmoskovc@redhat.com> 1.0-1
+* Fri Sep  6 2013 Jiri Moskovcak <jmoskovc@redhat.com> 1.0-1
 - initial packaging
