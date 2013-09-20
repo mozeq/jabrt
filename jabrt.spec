@@ -9,11 +9,16 @@ Summary:        ABRT Java bindings
 License:        Applications/System
 URL:            https://github.com/mozeq/%{name}
 #Source0:        https://github.com/mozeq/%{name}/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
-Source0:	%{name}-%{version}-%{shortcommit}.tar.gz
+Source0:        %{name}-%{version}-%{shortcommit}.tar.gz
 BuildArch:      noarch
 
+BuildRequires:  java-devel >= 1:1.6.0
 BuildRequires:  maven-local
 BuildRequires:  jnr-unixsocket >= 0.2
+BuildRequires:  jpackage-utils
+
+Requires:       java >= 1:1.6.0
+Requires:       jpackage-utils
 
 %description
 ABRT Java bingings prividing a convenient way to report problems
