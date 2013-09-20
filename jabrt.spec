@@ -1,4 +1,4 @@
-%global commit 53b117bf105123e8d2b878e385fca31eb796f27e
+%global commit ef43ae7cb406f09a5cd573db9e992910ac544cf3
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           jabrt
@@ -13,9 +13,10 @@ Source0:	%{name}-%{version}-%{shortcommit}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  maven-local
+BuildRequires:  jnr-unixsocket >= 0.2
 
 %description
-ABRT Java binging should provide a conve way to report problems
+ABRT Java bingings prividing a convenient way to report problems
 
 %package javadoc
 Summary: API documentation for %{name}
