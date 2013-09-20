@@ -111,12 +111,12 @@ public class ProblemDataServer {
 	public void test() {
 		System.out.println("Sending testing data to abrt");
 		ProblemData pd = new ProblemDataAbrt();
-		pd.add("BACKTRACE", "backtrace content");
-		pd.add("TYPE", "java");
-		pd.add("ANALYZER", "java");
-		pd.add("PID", "12345");
-		pd.add("EXECUTABLE", "/bin/eclipse");
-		pd.add("REASON", "tesing java problem data");
+		pd.add(ProblemDataKey.BACKTRACE, "backtrace content");
+		pd.add(ProblemDataKey.TYPE, "java");
+		pd.add(ProblemDataKey.ANALYZER, "java");
+		pd.add(ProblemDataKey.PID, "12345");
+		pd.add(ProblemDataKey.EXECUTABLE, "/bin/eclipse");
+		pd.add(ProblemDataKey.REASON, "tesing java problem data");
 		String filename = "/etc/hosts";
 		try {
 			pd.addFile(filename);
