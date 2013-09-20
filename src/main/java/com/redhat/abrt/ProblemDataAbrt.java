@@ -107,4 +107,13 @@ public class ProblemDataAbrt implements ProblemData {
 		return retval;
 	}
 
+    public void add(ProblemDataKey key, String value) {
+        add(key.toString(), value);
+    }
+
+    public String get(ProblemDataKey key) {
+        return get(key.toString());
+
+    }
+
 }
