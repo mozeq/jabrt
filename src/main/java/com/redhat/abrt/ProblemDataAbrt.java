@@ -20,6 +20,8 @@
 package com.redhat.abrt;
 
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -115,5 +117,17 @@ public class ProblemDataAbrt implements ProblemData {
         return get(key.toString());
 
     }
+
+    public void add(String key, Throwable t) {
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter pWriter = new PrintWriter(stringWriter);
+        t.printStackTrace(pWriter);
+        add(key, stringWriter.toString());
+    }
+
+    public void add(ProblemDataKey key, Throwable t) {
+        add(key.toString(), t);
+    }
+
 
 }
