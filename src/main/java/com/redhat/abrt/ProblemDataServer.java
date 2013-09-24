@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.CharBuffer;
 import java.nio.channels.Channels;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import jnr.unixsocket.UnixSocketAddress;
@@ -78,7 +79,7 @@ public class ProblemDataServer {
 		}
 	}
 
-	public void send(ProblemData problemData) throws IOException {
+	public void send(Map<String, String> problemData) throws IOException {
 		connect();
 		writer.write("PUT / HTTP/1.1\r\n\r\n");
 		for (Entry<String, String> item: problemData.entrySet()) {
@@ -111,15 +112,15 @@ public class ProblemDataServer {
 	public void test() {
 		System.out.println("Sending testing data to abrt");
 		ProblemData pd = new ProblemDataAbrt();
-		pd.add(ProblemDataKey.BACKTRACE, "backtrace content");
-		pd.add(ProblemDataKey.TYPE, "java");
-		pd.add(ProblemDataKey.ANALYZER, "java");
-		pd.add(ProblemDataKey.PID, "12345");
-		pd.add(ProblemDataKey.EXECUTABLE, "/bin/eclipse");
-		pd.add(ProblemDataKey.REASON, "tesing java problem data");
+		pd.put(ProblemDataKey.BACKTRACE, "backtrace content");
+		pd.put(ProblemDataKey.TYPE, "java");
+		pd.put(ProblemDataKey.ANALYZER, "java");
+		pd.put(ProblemDataKey.PID, "12345");
+		pd.put(ProblemDataKey.EXECUTABLE, "/bin/eclipse");
+		pd.put(ProblemDataKey.REASON, "tesing java problem data");
 		String filename = "/etc/hosts";
 		try {
-			pd.addFile(filename);
+			pd.putFile(filename);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.err.println("Can't add file: " + filename);

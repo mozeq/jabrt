@@ -16,7 +16,7 @@ public class JABRTTest
         final String value = "Some reason";
         ProblemDataKey key = ProblemDataKey.REASON;
         ProblemData pd = new ProblemDataAbrt();
-        pd.add(key, value);
+        pd.put(key, value);
         org.junit.Assert.assertTrue("Trying to get the value of the key: '"+key+"'", pd.get(key).compareTo(value) == 0);
 
     }
@@ -32,7 +32,7 @@ public class JABRTTest
         PrintWriter pWriter = new PrintWriter(stringWriter);
         t.printStackTrace(pWriter);
 
-        pd.add(key, t);
+        pd.put(key, t);
         org.junit.Assert.assertTrue("Trying to get the value of the key: '"+key+"'", pd.get(key).compareTo(stringWriter.toString()) == 0);
 
     }

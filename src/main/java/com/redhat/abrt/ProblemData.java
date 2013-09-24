@@ -24,11 +24,9 @@ import java.util.Map;
 
 
 public interface ProblemData extends Map<String, String> {
-	void add(String key, String value);
-	void add(ProblemDataKey key, String value);
-	void add(ProblemDataKey key, Throwable t);
-	void add(String key, Throwable t);
+	void put(ProblemDataKey key, String value);
+	void put(ProblemDataKey key, Throwable t);
+	void put(String key, Throwable t);
 	String get(ProblemDataKey key);
-	void addFile(String filename) throws FileNotFoundException;
-	void remove(String key);
+	void putFile(String filename) throws FileNotFoundException;
 }

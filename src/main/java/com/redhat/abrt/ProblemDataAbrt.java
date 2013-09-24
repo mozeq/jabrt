@@ -31,16 +31,12 @@ import java.util.Set;
 public class ProblemDataAbrt implements ProblemData {
 	private Map<String, ProblemDataItem> problemData = new HashMap<String, ProblemDataItem>();
 
-	private void add(String key, ProblemDataItem value) {
+	private void put(String key, ProblemDataItem value) {
 		problemData.put(key, value);
 	}
 
-	public void add(String key, String value) {
-		problemData.put(key, new ProblemDataItemString(value));
-	}
-
-	public void addFile(String filename) throws FileNotFoundException {
-		add(filename, new ProblemDataItemFile(filename));
+	public void putFile(String filename) throws FileNotFoundException {
+		put(filename, new ProblemDataItemFile(filename));
 	}
 
 	public void remove(String key) {
@@ -109,8 +105,8 @@ public class ProblemDataAbrt implements ProblemData {
 		return retval;
 	}
 
-    public void add(ProblemDataKey key, String value) {
-        add(key.toString(), value);
+    public void put(ProblemDataKey key, String value) {
+        put(key.toString(), value);
     }
 
     public String get(ProblemDataKey key) {
@@ -118,16 +114,15 @@ public class ProblemDataAbrt implements ProblemData {
 
     }
 
-    public void add(String key, Throwable t) {
+    public void put(String key, Throwable t) {
         StringWriter stringWriter = new StringWriter();
         PrintWriter pWriter = new PrintWriter(stringWriter);
         t.printStackTrace(pWriter);
-        add(key, stringWriter.toString());
+        put(key, stringWriter.toString());
     }
 
-    public void add(ProblemDataKey key, Throwable t) {
-        add(key.toString(), t);
+    public void put(ProblemDataKey key, Throwable t) {
+        put(key.toString(), t);
     }
-
 
 }
